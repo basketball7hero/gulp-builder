@@ -1,0 +1,51 @@
+.section {
+
+    &_st-footer {
+        @include box-shadow-1;
+        background-color: $white;
+    }
+}
+
+.st-footer {
+
+    &__content {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    &__part {
+        display: flex;
+        flex-flow: row nowrap;
+        flex: 0 0 auto;
+
+        &_main {
+            flex-flow: column nowrap;
+            width: 286px;
+        }
+
+        &_menu {
+            padding-left: $gutter-step * 6;
+            flex: 1 0 auto;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        margin-top: $gutter-step * -1.2!important;
+        margin-bottom: $gutter-step;
+    }
+
+    &__copyright {
+        font-family: $font-KronaOne;
+        color: $gray-2;
+        margin-bottom: $gutter-step * 2;
+        font-size: $fz-xs - 2px;
+        line-height: 2;
+        text-align: center;
+    }
+
+    &__social-networks {
+        display: flex;
+        justify-content: center;
+    }
+}

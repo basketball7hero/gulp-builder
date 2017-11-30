@@ -1,0 +1,29 @@
+.section {
+
+    &_st-main {
+        display: flex;
+        flex-flow: column nowrap;
+        flex: 1 0 auto;
+    }
+}
+
+.st-main {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 0 auto;
+
+    .container-fluid,
+    .container {
+        display: flex;
+        flex-flow: column nowrap;
+        flex: 1 0 auto;
+        width: 100%;
+    }
+
+    &__content {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 0 auto;
+        margin: 0 $gutter-half * -0.5;
+    }
+}

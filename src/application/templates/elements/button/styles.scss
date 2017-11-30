@@ -1,0 +1,312 @@
+@mixin button-style(
+    $bg,
+    $bg-hover,
+    $bg-active,
+    $bg-disabled,
+
+    $bd,
+    $bd-hover,
+    $bd-active,
+    $bd-disabled,
+
+    $color,
+    $color-hover,
+    $color-active,
+    $color-disabled
+) {
+    background-color: $bg;
+    border-color: $bd;
+    color: $color;
+
+    .btn__content {
+        color: $color;
+    }
+
+    .btn__chevron {
+
+        .icon {
+            fill: $color;
+        }
+    }
+
+    .btn__icon {
+
+        .icon {
+            fill: $color;
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+
+        &:hover,
+        &_is-hover,
+        &:focus,
+        &_is-focus {
+            background-color: $bg-hover;
+            border-color: $bd-hover;
+            color: $color-hover;
+
+            .btn__content {
+                color: $color-hover;
+            }
+
+            .btn__chevron {
+
+                .icon {
+                    fill: $color-hover;
+                }
+            }
+
+            .btn__icon {
+
+                .icon {
+                    fill: $color-hover;
+                }
+            }
+        }
+    }
+
+    &.btn_is-active {
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &:active,
+    &.btn_is-active {
+        background-color: $bg-active;
+        border-color: $bd-active;
+        color: $color-active;
+
+        .btn__content {
+            color: $color-active;
+        }
+
+        .btn__chevron {
+
+            .icon {
+                fill: $color-active;
+            }
+        }
+
+        .btn__icon {
+
+            .icon {
+                fill: $color-active;
+            }
+        }
+    }
+
+    &.is-disabled,
+    &[disabled] {
+        cursor: default;
+        pointer-events: none;
+        background-color: $bg-disabled;
+        border-color: $bd-disabled;
+        color: $color-disabled;
+
+        .btn__content {
+            color: $color-disabled;
+        }
+
+        .btn__chevron {
+
+            .icon {
+                fill: $color-disabled;
+            }
+        }
+
+        .btn__icon {
+
+            .icon {
+                fill: $color-disabled;
+            }
+        }
+    }
+}
+
+@mixin button-size(
+    $height,
+    $border-width,
+    $padding-horizontal,
+    $font-size
+) {
+    border-width: $border-width;
+    height: $height;
+    padding-right: $padding-horizontal;
+    padding-left: $padding-horizontal;
+    font-size: $font-size!important;
+    line-height: $height - $border-width * 2;
+}
+
+
+.btn,
+button.btn,
+submit.btn,
+input[type='button'].btn,
+input[type='submit'].btn {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex-flow: row nowrap;
+    min-width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-OpenSans;
+    appearance: none;
+    border-style: solid;
+    border-radius: $border-radius;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all $time ease;
+}
+
+.btn {
+    @include clearfix;
+
+    &__icon {
+        display: flex;
+        flex: 0 0 auto;
+        width: $gutter-step * 2;
+        height: $gutter-step * 2;
+
+        .icon {
+            position: absolute;
+            @include push-center;
+            transition: fill $time ease;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex: 1 1 auto;
+        transition: color $time ease;
+    }
+
+    &_st-main-menu {
+
+        @include button-size(
+            $gutter-step * 2.5,
+            0,
+            $gutter-half,
+            $fz
+        );
+
+        @include button-style(
+            $blue,
+            $blue-hover,
+            $blue-active,
+            $gray,
+
+            transparent,
+            transparent,
+            transparent,
+            transparent,
+
+            $white,
+            $white,
+            $white,
+            $gray
+        );
+
+        @include media-breakpoint-only(xs) {
+            border-radius: 0;
+            min-height: $gutter-step * 3;
+            padding-top: $gutter-step * 0.2;
+            padding-bottom: $gutter-step * 0.2;
+
+            @include button-size(
+                auto,
+                0,
+                $gutter-half,
+                $fz
+            );
+
+
+            @include button-style(
+                $black-l,
+                transparent,
+                $black-l,
+                $gray,
+
+                transparent,
+                transparent,
+                transparent,
+                transparent,
+
+                $gray,
+                $white,
+                $white,
+                $gray
+            );
+        }
+    }
+
+    &_st-main-menu &__content {
+
+        @include media-breakpoint-only(xs) {
+            padding-left: $gutter-half;
+        }
+    }
+
+    &_st-header {
+
+        @include button-size(
+            $gutter-step * 3.8,
+            1px,
+            $gutter-half,
+            $fz
+        );
+
+        @include button-style(
+            $black-l,
+            $black,
+            $black,
+            $gray,
+
+            $gray-d,
+            $gray-d-hover,
+            $white,
+            $white,
+
+            $gray-2,
+            $gray-2,
+            $white,
+            $white
+        );
+
+        @include media-breakpoint-only(xs) {
+            height: $gutter-step * 3;
+            width: $gutter-step * 3;
+            padding: 0;
+            border: 0;
+            @include box-shadow-1;
+
+            .btn__icon {
+                position: absolute;
+                @include push-center;
+
+                .icon {
+                    width: $gutter-step * 1.8;
+                    height: $gutter-step * 1.8;
+                }
+            }
+
+            @include button-style(
+                $black,
+                $black,
+                $black,
+                $gray,
+
+                $gray-d,
+                $gray-d-hover,
+                $white,
+                $white,
+
+                $gray-2,
+                $gray-2,
+                $white,
+                $white
+            );
+        }
+    }
+}

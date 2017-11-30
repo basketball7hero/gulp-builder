@@ -1,0 +1,9 @@
+.flex-fill {
+  display: flex;
+  flex: 1 1 auto;
+
+
+  .st-video & {
+    z-index: -1;
+  }
+}

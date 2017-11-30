@@ -1,0 +1,19 @@
+mixin main-menu
+    +b.NAV.section_st-main-menu
+        +b.st-main-menu
+            .container-fluid
+                .container
+                    +e.content
+                        +e.part
+                            +e.item
+                                +main-menu-link('/', 'Главная')
+                        +b.flex-fill
+                        +e.part
+                            if (user)
+                                +e.item
+                                    +main-menu-link('/logout', 'Выход')
+                            else
+                                +e.item
+                                    +main-menu-link('/login', 'Вход')
+                                +e.item
+                                    +main-menu-link('/registration', 'Регистрация')

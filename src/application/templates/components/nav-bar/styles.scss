@@ -1,0 +1,26 @@
+.section {
+
+    &_st-nav-bar {
+        z-index: 3;
+        background-color: $white;
+        @include box-shadow-1;
+
+        &[theme='dark'] {
+            background-color: $black;
+        }
+    }
+}
+
+.st-nav-bar {
+
+    &__content {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    &__part {
+        display: flex;
+        height: $gutter-step * 3.5;
+        align-items: center;
+    }
+}

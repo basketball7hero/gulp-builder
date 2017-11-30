@@ -1,0 +1,2 @@
+@include make-indents($indents-margin, $indents-size, true);
+@include make-indents($indents-padding, $indents-size, false);

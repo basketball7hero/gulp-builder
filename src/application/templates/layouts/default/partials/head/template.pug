@@ -1,0 +1,11 @@
+mixin head
+    head
+        block head
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+        meta(http-equiv='X-UA-Compatible' content='IE=9')
+        title= pageSettings.pageTitle || ''
+        meta(name='description' content=pageSettings.pageDescription || '')
+        meta(name='keywords' content=pageSettings.pageKeywords || '')
+        link(href='/static/css/styles.min.css' rel='stylesheet' type='text/css')
+        link(href='/static/images/favicon.ico' rel='icon' type='image/x-icon')

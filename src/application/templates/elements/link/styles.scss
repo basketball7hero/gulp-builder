@@ -1,0 +1,126 @@
+@mixin link-style(
+    $cl,
+    $cl-hover,
+    $cl-focus,
+    $cl-active
+) {
+    color: $cl;
+
+    .icon {
+        width: $gutter-step;
+        height: $gutter-step;
+        fill: $cl;
+    }
+
+    &_underline {
+        border-bottom: 1px solid $cl;
+
+        &:hover {
+            border-bottom: 1px solid $cl-hover;
+        }
+
+        @include media-breakpoint-up(md) {
+
+            &:focus {
+                border-bottom: 1px solid $cl-focus;
+            }
+        }
+
+        &:active {
+            border-bottom: 1px solid $cl-active;
+        }
+
+        &_is-active {
+            border-bottom: 1px solid $cl-active;
+        }
+    }
+
+    &:hover {
+        color: $cl-hover;
+
+        .icon {
+            fill: $cl-hover;
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+
+        &:focus {
+            color: $cl-focus;
+
+            .icon {
+                fill: $cl-focus;
+            }
+        }
+    }
+
+    &:active {
+        color: $cl-active;
+
+        .icon {
+            fill: $cl-active;
+        }
+    }
+
+    &_is-active {
+        color: $cl-active;
+
+        .icon {
+            fill: $cl-active;
+        }
+    }
+};
+
+a {
+    text-decoration: none;
+    transition: all $time ease;
+}
+
+.link {
+    cursor: pointer;
+    display: inline-block;
+    transition: all $time ease;
+    will-change: all;
+
+    @include link-style(
+        $text-color,
+        $blue-hover,
+        $blue-focus,
+        $blue-active
+    );
+
+    &_is-active {
+        color: $blue!important;
+        pointer-events: none;
+    }
+
+
+    &__content {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+    }
+
+    &__icon {
+        display: flex;
+
+        .icon {
+            width: $gutter-step;
+            height: $gutter-step;
+        }
+    }
+
+    &__text {
+        display: flex;
+    }
+
+    &_blue {
+
+        @include link-style(
+            $blue,
+            $blue-hover,
+            $blue-focus,
+            $blue-active
+        );
+    }
+}

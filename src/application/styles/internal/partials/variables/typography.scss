@@ -1,0 +1,46 @@
+$FontsFolder: '/static/fonts/';
+$OpenSans: 'OpenSans';
+$KronaOne: 'KronaOne';
+$OpenSansFolder: $FontsFolder + $OpenSans + '/' + $OpenSans;
+$KronaOneFolder: $FontsFolder + $KronaOne + '/' + $KronaOne;
+
+$font-KronaOne: $KronaOne, sans-serif;
+$font-OpenSans: $OpenSans, sans-serif;
+
+$fz-xxxl:   24px;
+$fz-xxl:    22px;
+$fz-xl:     20px;
+$fz-lg:     18px;
+$fz-md:     16px;
+
+$fz:        14px;
+$lh:        1.3;
+
+$lh-p: 		2;
+
+$fz-sm:     12px;
+$fz-xs:     10px;
+$fz-xxs:    8px;
+
+$fz-h1:     38px;
+$lh-h1:     1.5;
+
+$fz-h2:     30px;
+$fz-h3:     24px;
+$fz-h4:     18px;
+$fz-h5:     18px;
+$fz-h6:     18px;
+
+$text-color: $black;
+
+@mixin font-OpenSans() {
+    font-family: $font-OpenSans;
+    font-size: $fz;
+    line-height: $lh;
+}
+
+@mixin font-KronaOne() {
+    font-family: $font-KronaOne;
+    font-size: $fz;
+    line-height: $lh;
+}

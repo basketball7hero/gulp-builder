@@ -1,0 +1,29 @@
+extends ../layouts/default/template
+
+
+block head
+    - pageSettings['pageTitle'] = '404 Страница не найдена';
+    - pageSettings['pageDescription'] = '404 Страница не найдена';
+    - pageSettings['pageKeywords'] = '404 Страница не найдена';
+    - pageSettings['class'] = '_page404';
+    - pageSettings['navbar'] = true;
+    - pageSettings['breadcrumbs'] = [{ text: '404 Страница не найдена', active: true }];
+
+
+block body-top-scripts
+
+
+block body-bottom-scripts
+    script(src='/static/js/bundle.min.js')
+
+
+block content
+    .container-fluid
+        .container
+            +e.content.grid-12
+                +e.col.col-9
+                    section.section
+                        | test
+                +e.col.col-3
+                    section.section
+                        | test

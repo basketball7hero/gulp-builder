@@ -1,0 +1,35 @@
+export const ACCEPT = 'ACCEPT';
+export const REJECT = 'REJECT';
+
+
+export const STATE = 'STATE';
+export const STATE_CHANGE = 'STATE_CHANGE';
+export const STATE_CHANGE_ACCEPT = 'STATE_CHANGE_ACCEPT';
+export const STATE_CHANGE_REJECT = 'STATE_CHANGE_REJECT';
+
+
+export const STATE_CHANGE_ACCEPT_BREAKPOINT = 'STATE_CHANGE_ACCEPT_BREAKPOINT';
+
+
+export const API = 'API';
+export const API_INCLUDE = 'API_INCLUDE';
+export const API_INCLUDE_ACCEPT = 'API_INCLUDE_ACCEPT';
+export const API_INCLUDE_REJECT = 'API_INCLUDE_REJECT';
+export const API_SYNC = 'API_SYNC';
+export const API_SYNC_ACCEPT = 'API_SYNC_ACCEPT';
+export const API_SYNC_REJECT = 'API_SYNC_REJECT';
+
+
+export const USER = 'USER';
+export const USER_CREATE = 'USER_CREATE';
+export const USER_CREATE_ACCEPT = 'USER_CREATE_ACCEPT';
+export const USER_CREATE_REJECT = 'USER_CREATE_REJECT';
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGIN_ACCEPT = 'USER_LOGIN_ACCEPT';
+export const USER_LOGIN_REJECT = 'USER_LOGIN_REJECT';
+export const USER_LOGOUT = 'USER_LOGOUT';
+export const USER_LOGOUT_ACCEPT = 'USER_LOGOUT_ACCEPT';
+export const USER_LOGOUT_REJECT = 'USER_LOGOUT_REJECT';
+export const USER_SIGN = 'USER_SIGN';
+export const USER_SIGN_ACCEPT = 'USER_SIGN_ACCEPT';
+export const USER_SIGN_REJECT = 'USER_SIGN_REJECT';

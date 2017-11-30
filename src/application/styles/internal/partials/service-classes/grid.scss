@@ -1,0 +1,282 @@
+@for $i from 1 through $grid-size {
+    $grid-colPortions: map-merge($grid-colPortions, ($i: ($grid-colUnit*$i)));
+}
+
+@for $i from 1 through $grid-size {
+    $fraction: 1 / $i;
+    $grid-colFractions: map-merge($grid-colFractions, ($fraction: $fraction * 100%));
+}
+
+@mixin bp($breakpoint) {
+    $query: map-get($grid-breakpoints, $breakpoint);
+
+    @if $breakpoint == md {
+
+        @include media-breakpoint-up($breakpoint) {
+
+            @content;
+        }
+    }
+
+    @if $breakpoint == sm {
+
+        @include media-breakpoint-only($breakpoint) {
+
+            @content;
+        }
+    }
+
+    @if $breakpoint == xs {
+
+        @include media-breakpoint-down($breakpoint) {
+
+            @content
+        }
+    }
+}
+
+@mixin makeGridByNumber($grid) {
+
+    @for $i from 1 through $grid-size {
+
+        [#{$grid-attributeName}*="#{$grid}-#{$i}"] > [#{$grid-attributeName}~="#{$grid-colsName}"],
+        [#{$grid-attributeName}*="#{$grid}-#{$i}"] > [#{$grid-attributeName}*="#{$grid-colsName}-"],
+        [#{$grid-attributeName}*="#{$grid}-#{$i}"] > [#{$grid-attributeName}*="#{$grid-colsName}_"] {
+            $fraction: 1 / $i;
+            flex-basis: map-get($grid-colFractions, $fraction);
+            max-width: map-get($grid-colFractions, $fraction);
+        }
+    }
+}
+
+@mixin makeCol($col) {
+
+    [#{$grid-attributeName}~="#{$grid-gridName}"],
+    [#{$grid-attributeName}*="#{$grid-gridName}-"],
+    [#{$grid-attributeName}*="#{$grid-gridName}_"] {
+
+        @for $i from 1 through $grid-size {
+
+            > [#{$grid-attributeName}*="#{$col}-#{$i}"] {
+                flex-basis: map-get($grid-colPortions, $i);
+                max-width: map-get($grid-colPortions, $i);
+            }
+        }
+    }
+}
+
+@mixin makeFirstLast($mq) {
+
+    [#{$grid-attributeName}~="#{$grid-gridName}"],
+    [#{$grid-attributeName}*="#{$grid-gridName}-"],
+    [#{$grid-attributeName}*="#{$grid-gridName}_"] {
+
+        [#{$grid-attributeName}*="#{$mq}-first"] {
+            order: -1;
+        }
+
+        [#{$grid-attributeName}*="#{$mq}-last"] {
+            order: 1;
+        }
+    }
+}
+
+@mixin makeOff($off) {
+
+    [#{$grid-attributeName}~="#{$grid-gridName}"],
+    [#{$grid-attributeName}*="#{$grid-gridName}-"],
+    [#{$grid-attributeName}*="#{$grid-gridName}_"] {
+
+        @for $i from 0 through $grid-size - 1 {
+
+            > [data-push-left*="#{$off}-#{$i}"] {
+                margin-left: map-get($grid-colPortions, $i);
+            }
+        }
+    }
+
+    [#{$grid-attributeName}~="#{$grid-gridName}"],
+    [#{$grid-attributeName}*="#{$grid-gridName}-"],
+    [#{$grid-attributeName}*="#{$grid-gridName}_"] {
+
+        @for $i from 0 through $grid-size - 1 {
+
+            > [data-push-right*="#{$off}-#{$i}"] {
+                margin-right: map-get($grid-colPortions, $i);
+            }
+        }
+    }
+}
+
+[#{$grid-attributeName}~="#{$grid-gridName}"],
+[#{$grid-attributeName}*="#{$grid-gridName}-"],
+[#{$grid-attributeName}*="#{$grid-gridName}_"] {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 $gutter-step * -1;
+}
+
+[#{$grid-attributeName}~="#{$grid-colsName}"],
+[#{$grid-attributeName}*="#{$grid-colsName}-"],
+[#{$grid-attributeName}*="#{$grid-colsName}_"] {
+    box-sizing: border-box;
+    padding: 0 $gutter-step * 1;
+    max-width: 100%;
+}
+
+[#{$grid-attributeName}~="#{$grid-colsName}"],
+[#{$grid-attributeName}*="#{$grid-colsName}_"] {
+    flex: 1 1 0%;
+}
+
+[#{$grid-attributeName}*="#{$grid-colsName}-"] {
+    flex: none;
+}
+
+[#{$grid-attributeName}~="#{$grid-gridName}"][#{$grid-attributeName}~="#{$grid-colsName}"],
+[#{$grid-attributeName}~="#{$grid-gridName}"][#{$grid-attributeName}*="#{$grid-colsName}-"],
+[#{$grid-attributeName}~="#{$grid-gridName}"][#{$grid-attributeName}*="#{$grid-colsName}_"],
+[#{$grid-attributeName}*="#{$grid-gridName}-"][#{$grid-attributeName}~="#{$grid-colsName}"],
+[#{$grid-attributeName}*="#{$grid-gridName}-"][#{$grid-attributeName}*="#{$grid-colsName}-"],
+[#{$grid-attributeName}*="#{$grid-gridName}-"][#{$grid-attributeName}*="#{$grid-colsName}_"],
+[#{$grid-attributeName}*="#{$grid-gridName}_"][#{$grid-attributeName}~="#{$grid-colsName}"],
+[#{$grid-attributeName}*="#{$grid-gridName}_"][#{$grid-attributeName}*="#{$grid-colsName}-"],
+[#{$grid-attributeName}*="#{$grid-gridName}_"][#{$grid-attributeName}*="#{$grid-colsName}_"] {
+    margin: 0;
+    padding: 0;
+}
+
+[#{$grid-attributeName}*="#{$grid-gridName}-"] {
+
+    &[#{$grid-attributeName}*="-noGutter"] {
+        margin: 0;
+
+        > [#{$grid-attributeName}~="#{$grid-colsName}"],
+        > [#{$grid-attributeName}*="#{$grid-colsName}-"] {
+            padding: 0;
+        }
+    }
+
+    &[#{$grid-attributeName}*="-noWrap"] {
+        flex-wrap: nowrap;
+    }
+
+    &[#{$grid-attributeName}*="-center"] {
+        justify-content: center;
+    }
+
+    &[#{$grid-attributeName}*="-right"] {
+        justify-content: flex-end;
+        align-self: flex-end;
+        margin-left: auto;
+    }
+
+    &[#{$grid-attributeName}*="-top"] {
+        align-items: flex-start;
+    }
+
+    &[#{$grid-attributeName}*="-middle"] {
+        align-items: center;
+    }
+
+    &[#{$grid-attributeName}*="-bottom"] {
+        align-items: flex-end;
+    }
+
+    &[#{$grid-attributeName}*="-reverse"] {
+        flex-direction: row-reverse;
+    }
+
+    &[#{$grid-attributeName}*="-column"] {
+        flex-direction: column;
+
+        > [#{$grid-attributeName}*="#{$grid-colsName}-"] {
+            flex-basis: auto;
+        }
+    }
+
+    &[#{$grid-attributeName}*="-column-reverse"] {
+        flex-direction: column-reverse;
+    }
+
+    &[#{$grid-attributeName}*="-spaceBetween"] {
+        justify-content: space-between;
+    }
+
+    &[#{$grid-attributeName}*="-spaceAround"] {
+        justify-content: space-around;
+    }
+
+    &[#{$grid-attributeName}*="-equalHeight"] > [#{$grid-attributeName}~="#{$grid-colsName}"],
+    &[#{$grid-attributeName}*="-equalHeight"] > [#{$grid-attributeName}*="#{$grid-colsName}-"],
+    &[#{$grid-attributeName}*="-equalHeight"] > [#{$grid-attributeName}*="#{$grid-colsName}_"] {
+        align-self: stretch;
+
+        > * {
+            height: 100%;
+        }
+    }
+
+    &[#{$grid-attributeName}*="-noBottom"] > [#{$grid-attributeName}~="#{$grid-colsName}"],
+    &[#{$grid-attributeName}*="-noBottom"] > [#{$grid-attributeName}*="#{$grid-colsName}-"],
+    &[#{$grid-attributeName}*="-noBottom"] > [#{$grid-attributeName}*="#{$grid-colsName}_"] {
+        padding-bottom: 0;
+    }
+}
+
+[#{$grid-attributeName}*="#{$grid-colsName}-"] {
+
+    &[#{$grid-attributeName}*="-top"] {
+        align-self: flex-start;
+    }
+
+    &[#{$grid-attributeName}*="-middle"] {
+        align-self: center;
+    }
+
+    &[#{$grid-attributeName}*="-bottom"] {
+        align-self: flex-end;
+    }
+
+    &[#{$grid-attributeName}*="-first"] {
+        order: -1;
+    }
+
+    &[#{$grid-attributeName}*="-last"] {
+        order: 1;
+    }
+}
+
+@include makeGridByNumber(#{$grid-gridName});
+
+@each $mq-key, $mq-value in $grid-breakpoints {
+
+    @include bp(#{$mq-key}) {
+
+        @include makeGridByNumber(_#{$mq-key});
+    }
+}
+
+@include makeCol(#{$grid-colsName});
+@include makeOff(off);
+
+@each $mq-key, $mq-value in $grid-breakpoints {
+
+    @include bp(#{$mq-key}) {
+
+        @include makeCol(_#{$mq-key});
+        @include makeOff(_#{$mq-key});
+        @include makeFirstLast(_#{$mq-key});
+    }
+}
+
+@each $mq-key, $mq-value in $grid-breakpoints {
+
+    @include bp(#{$mq-key}) {
+
+        [#{$grid-attributeName}*="#{$mq-key}-hidden"] {
+            display: none;
+        }
+    }
+}

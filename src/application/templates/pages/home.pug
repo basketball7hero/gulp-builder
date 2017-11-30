@@ -1,0 +1,29 @@
+extends ../layouts/default/template
+
+
+block head
+    - pageSettings['pageTitle'] = 'Домашняя';
+    - pageSettings['pageDescription'] = 'Домашняя';
+    - pageSettings['pageKeywords'] = 'Домашняя';
+    - pageSettings['class'] = '_home';
+    - pageSettings['navbar'] = false;
+    - pageSettings['breadcrumbs'] = [];
+
+
+block body-top-scripts
+
+
+block body-bottom-scripts
+    script(src='/static/js/bundle.min.js')
+
+
+block content
+    .container-fluid
+        .container
+            +e.content.grid-12
+                +e.col.col-9
+                    section.section
+                        | test
+                +e.col.col-3
+                    section.section
+                        | test

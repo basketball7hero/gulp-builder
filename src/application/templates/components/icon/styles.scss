@@ -1,0 +1,7 @@
+.icon {
+    display: inline-block;
+    width: $gutter-step * 2;
+    height: $gutter-step * 2;
+    transition: all $time ease;
+    fill: $text-color;
+}

@@ -1,0 +1,68 @@
+@font-face {
+    font-family: $KronaOne;
+    src: url($KronaOneFolder + '-Regular.eot');
+    src: url($KronaOneFolder + '-Regular.woff2') format('woff2'),
+    url($KronaOneFolder + '-Regular.woff') format('woff'),
+    url($KronaOneFolder + '-Regular.ttf') format('truetype'),
+    url($KronaOneFolder + '-Regular.svg#' + $KronaOne + '-Regular') format('svg'),
+    url($KronaOneFolder + '-Regular.eot?#iefix') format('embedded-opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: $OpenSans;
+    src: url($OpenSansFolder + '-Light.eot');
+    src: url($OpenSansFolder + '-Light.woff2') format('woff2'),
+    url($OpenSansFolder + '-Light.woff') format('woff'),
+    url($OpenSansFolder + '-Light.ttf') format('truetype'),
+    url($OpenSansFolder + '-Light.svg#' + $OpenSans + '-Light') format('svg'),
+    url($OpenSansFolder + '-Light.eot?#iefix') format('embedded-opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: $OpenSans;
+    src: url($OpenSansFolder + '-LightItalic.eot');
+    src: url($OpenSansFolder + '-LightItalic.woff2') format('woff2'),
+    url($OpenSansFolder + '-LightItalic.woff') format('woff'),
+    url($OpenSansFolder + '-LightItalic.ttf') format('truetype'),
+    url($OpenSansFolder + '-LightItalic.svg#' + $OpenSans + '-LightItalic') format('svg'),
+    url($OpenSansFolder + '-LightItalic.eot?#iefix') format('embedded-opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: $OpenSans;
+    src: url($OpenSansFolder + '-Regular.eot');
+    src: url($OpenSansFolder + '-Regular.woff2') format('woff2'),
+    url($OpenSansFolder + '-Regular.woff') format('woff'),
+    url($OpenSansFolder + '-Regular.ttf') format('truetype'),
+    url($OpenSansFolder + '-Regular.svg#' + $OpenSans + '-Regular') format('svg'),
+    url($OpenSansFolder + '-Regular.eot?#iefix') format('embedded-opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: $OpenSans;
+    src: url($OpenSansFolder + '-Regular-Italic.eot');
+    src: url($OpenSansFolder + '-Regular-Italic.woff2') format('woff2'),
+    url($OpenSansFolder + '-Regular-Italic.eot?#iefix') format('embedded-opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: $OpenSans;
+    src: url($OpenSansFolder + '-Bold.eot');
+    src: url($OpenSansFolder + '-Bold.woff2') format('woff2'),
+    url($OpenSansFolder + '-Bold.woff') format('woff'),
+    url($OpenSansFolder + '-Bold.ttf') format('truetype'),
+    url($OpenSansFolder + '-Bold.svg#' + $OpenSans + '-Bold') format('svg'),
+    url($OpenSansFolder + '-Bold.eot?#iefix') format('embedded-opentype');
+    font-weight: 700;
+    font-style: normal;
+}

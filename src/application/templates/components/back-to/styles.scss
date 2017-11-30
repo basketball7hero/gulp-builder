@@ -1,0 +1,67 @@
+.st-back-to {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    color: $text-color;
+    text-decoration: none;
+
+    @include media-breakpoint-only(md) {
+
+        &:hover &__icon {
+
+            .icon {
+                fill: $blue;
+
+                .section_st-nav-bar[theme='dark'] & {
+                    fill: $blue;
+                }
+            }
+        }
+
+        &:hover &__label {
+            color: $blue;
+
+            .section_st-nav-bar[theme='dark'] & {
+                color: $blue;
+            }
+        }
+    }
+
+    &__icon {
+        top: 1px;
+        display: flex;
+        width: $gutter-step * 0.9;
+        height: $gutter-step * 0.9;
+        margin-right: $gutter-step * 0.5;
+
+        .icon {
+            @include overlay;
+            fill: $text-color;
+            transition: fill $time ease;
+
+            .section_st-nav-bar[theme='dark'] & {
+                fill: $gray-2;
+            }
+        }
+    }
+
+    &__label {
+        display: flex;
+        align-items: baseline;
+        font-weight: bold;
+        transition: color $time ease;
+        font-size: $fz - 1px;
+
+        .section_st-nav-bar[theme='dark'] & {
+            color: $gray-2;
+        }
+
+        > span {
+            color: $gray-d;
+            font-weight: normal;
+            text-transform: lowercase;
+        }
+    }
+}

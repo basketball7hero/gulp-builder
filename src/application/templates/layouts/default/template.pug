@@ -1,0 +1,35 @@
+include ../../../../../node_modules/bemto.pug/bemto
+include ./partials/head/template
+include ../../components/icon/template
+include ../../components/header/template
+include ../../components/main-menu/template
+include ../../components/main-menu-link/template
+include ../../components/nav-bar/template
+include ../../components/breadcrumbs/template
+include ../../components/back-to/template
+include ../../components/main/template
+include ../../components/footer/template
+
+
+- const link = '/';
+- const pageSettings = {};
+
+
+doctype html
+html(lang='ru')
+    +head
+    body
+        block body-top-scripts
+        include ../../components/icon/sprite.svg
+        - var attrs = { 'class': pageSettings.class };
+        +b.st-site-wrapper&attributes(attrs)
+            +header
+            +main-menu
+            if pageSettings.navbar
+                +nav-bar
+            +main
+            +footer
+        block body-bottom-scripts
+        if (user)
+            script
+                | window.__USER__ = { id: '#{user.id}', email: '#{user.email}', username: '#{user.username}', role: '#{user.role}' };

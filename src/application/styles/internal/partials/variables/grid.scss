@@ -1,0 +1,29 @@
+$site-max-w: 1922px;
+$site-min-w: 320px;
+$container-max-w: 1290px;
+
+
+$width-md-size: 1024px;
+$width-sm-size: 768px;
+$width-xs-size: 1px;
+
+
+$grid-breakpoints: (
+        xs: $width-xs-size,
+        sm: $width-sm-size,
+        md: $width-md-size
+);
+
+
+$grid-size: 12;
+$grid-colsName: col;
+$grid-gridName: grid;
+$grid-attributeName: class !default;
+$grid-colUnit: (100% / $grid-size);
+$grid-colPortions: (0: 0);
+$grid-colFractions: (0: 0);
+
+
+$gutter: 30px;
+$gutter-half: 15px;
+$gutter-step: 10px;

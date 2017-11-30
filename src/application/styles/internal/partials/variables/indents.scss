@@ -1,0 +1,124 @@
+$indents-margin: (
+    mt: margin-top,
+    mb: margin-bottom,
+    ml: margin-left,
+    mr: margin-right
+);
+
+$indents-padding: (
+    pt: padding-top,
+    pb: padding-bottom,
+    pl: padding-left,
+    pr: padding-right
+);
+
+$indents-size: 10;
+
+$m-1:  10px;
+$m-2:  20px;
+$m-3:  30px;
+$m-4:  40px;
+$m-5:  50px;
+$m-6:  60px;
+$m-7:  70px;
+$m-8:  80px;
+$m-9:  90px;
+$m-10: 100px;
+
+$im-1:  -10px;
+$im-2:  -20px;
+$im-3:  -30px;
+$im-4:  -40px;
+$im-5:  -50px;
+$im-6:  -60px;
+$im-7:  -70px;
+$im-8:  -80px;
+$im-9:  -90px;
+$im-10: -100px;
+
+@mixin make-indents($types, $size, $invert) {
+
+    @each $prefix, $type in ($types) {
+
+        @for $i from 0 to $size {
+
+            .#{$prefix}-#{$i} {
+                #{$type}: $gutter-step * $i!important;
+
+                &_5 {
+                    #{$type}: $gutter-step * $i + 5!important;
+                }
+            }
+
+            @if $invert == true {
+
+                .i#{$prefix}-#{$i} {
+                    #{$type}: -($gutter-step * $i)!important;
+
+                    &_5 {
+                        #{$type}: -($gutter-step * $i + 5)!important;
+                    }
+                }
+            }
+
+            @if $i == 9 {
+
+                .#{$prefix}-#{10} {
+                    #{$type}: $gutter-step * 10!important;
+                }
+
+                @if $invert == true {
+
+                    .i#{$prefix}-#{10} {
+                        #{$type}: -($gutter-step * 10)!important;
+                    }
+                }
+            }
+        }
+    }
+
+    @each $bp in map-keys($grid-breakpoints) {
+
+        @include media-breakpoint-only($bp) {
+
+            @each $prefix, $type in ($types) {
+
+                @for $i from 0 to $size {
+
+                    .#{$prefix}-#{$bp}-#{$i} {
+                        #{$type}: $gutter-step * $i !important;
+
+                        &_5 {
+                            #{$type}: $gutter-step * $i + 5 !important;
+                        }
+                    }
+
+                    @if $invert == true {
+
+                        .i#{$prefix}-#{$bp}-#{$i} {
+                            #{$type}: $gutter-step * $i !important;
+
+                            &_5 {
+                                #{$type}: $gutter-step * $i + 5 !important;
+                            }
+                        }
+                    }
+
+                    @if $i == 9 {
+
+                        .#{$prefix}-#{$bp}-#{10} {
+                            #{$type}: $gutter-step * 10!important;
+                        }
+
+                        @if $invert == true {
+
+                            .i#{$prefix}-#{$bp}-#{10} {
+                                #{$type}: -($gutter-step * 10)!important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

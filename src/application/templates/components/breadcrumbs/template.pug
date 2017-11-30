@@ -1,0 +1,8 @@
+mixin breadcrumbs
+    +b.st-breadcrumbs
+        +e.content
+            +e.item(href='/') Главная
+            each item in pageSettings.breadcrumbs
+                +e.icon
+                    +icon('icon-chevron-right')
+                +e.item_is-active(href=item.href)= item.text

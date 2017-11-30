@@ -1,0 +1,90 @@
+html > *:not(body) {
+    display: none!important;
+}
+
+html {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    &.is-active {
+        position: fixed;
+
+        body {
+            position: fixed;
+        }
+    }
+}
+
+body {
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    font-family: $font-OpenSans;
+    font-size: $fz;
+    background-color: $gray-0;
+
+    @include media-breakpoint-only(xs) {
+        font-size: $fz - 1px;
+    }
+}
+
+img {
+    border: none;
+}
+
+*,
+*:before,
+*:after {
+    position: relative;
+    box-sizing: border-box;
+    outline: none;
+}
+
+* {
+
+    &:first-child {
+        margin-top: 0!important;
+    }
+
+    &:last-child {
+        margin-bottom: 0!important;
+    }
+}
+
+.st-site-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 0 auto;
+    min-width: $site-min-w;
+
+    > .section {
+        min-width: $site-min-w;
+    }
+
+    @include media-breakpoint-only(xs) {
+        padding-top: $gutter-step * 5;
+    }
+}
+
+.container-fluid {
+    display: block;
+    width: 100%;
+    padding: 0 $gutter-half;
+}
+
+.container {
+    max-width: $container-max-w;
+    margin: auto;
+}
+
+.section {
+    display: block;
+    width: 100%;
+}
